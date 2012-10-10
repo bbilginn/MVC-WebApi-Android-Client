@@ -38,7 +38,6 @@ public class ThreadGet extends AsyncTask<String, Void, String> {
 			}
 		} catch (Exception e) {
 			Sonuc = "Ýþlem Baþarýsýz";
-			// TODO: handle exception
 		}
 		return Sonuc;
 
