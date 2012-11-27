@@ -1,10 +1,10 @@
 package com.example.webapiclientapp;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
+//import org.json.JSONArray;
+//import org.json.JSONObject;
 
+//import Ext.ThreadPost;
 import Ext.ThreadGet;
-import Ext.ThreadPost;
 import Ext.Dialogs;
 import Ext.NetKontrol;
 import android.os.Bundle;
@@ -36,8 +36,7 @@ public class MainActivity extends Activity {
 		if (!NetConn.isConn(this)) {
 			Dialogs.ToastGoster("Ýnternete eriþilemiyor.", MainActivity.this);
 		} else {
-			GetGonder.setOnClickListener((OnClickListener) this);
-
+			//GetGonder.setOnClickListener((OnClickListener) this);
 		}
 
 	}

@@ -1,7 +1,5 @@
 package Ext;
 
-import java.security.PublicKey;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
