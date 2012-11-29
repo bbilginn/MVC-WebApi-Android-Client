@@ -4,9 +4,10 @@ package com.example.webapiclientapp;
 //import org.json.JSONObject;
 
 //import Ext.ThreadPost;
-import Ext.ThreadGet;
+import Ext.ThreadPost;
 import Ext.Dialogs;
 import Ext.NetKontrol;
+import Models.IletisimModel;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
@@ -35,19 +36,30 @@ public class MainActivity extends Activity {
 		if (!NetConn.isConn(this)) {
 			Dialogs.ToastGoster("Ýnternete eriþilemiyor.", MainActivity.this);
 		} else {
-			//Get gönderisi
+			// Get gönderisi
 			Gonder.setOnClickListener(new Button.OnClickListener() {
 				public void onClick(View v) {
 					try {
-						ThreadGet Get = new ThreadGet();
-						Get.execute("http://webapiornek.azurewebsites.net/api/values");
-						Dialogs.ToastGoster("Gönderiliyor.", MainActivity.this);
-						Get.setDataDownloadListener(new ThreadGet.DataDownloadListener() {
-							public void dataDownloadedSuccessfully(String data) {
-								Dialogs.ToastGoster("Ýþlem Baþarýlý, " + data,
-										MainActivity.this);
-							}
-						});
+						ThreadPost PostGonder = new ThreadPost();
+						Dialogs.ToastGoster(
+								"Formunuz iletiliyor, lütfen bekleyiniz.",
+								MainActivity.this);
+						IletisimModel ilet = new IletisimModel();
+						ilet.Isim = Isim.getText().toString();
+						ilet.Mail = Mail.getText().toString();
+						ilet.Mesaj = Mesaj.getText().toString();
+
+						PostGonder
+								.execute(
+										"http://webapiornek.azurewebsites.net/api/values",
+										ilet.Form().toString());
+						PostGonder
+								.setDataDownloadListener(new ThreadPost.DataDownloadListener() {
+									public void dataDownloadedSuccessfully(String data) {
+										Dialogs.ToastGoster(data,
+												MainActivity.this);
+									}
+								});
 					} catch (Exception e) {
 						Dialogs.ToastGoster("Ýþlem Baþarýsýz",
 								MainActivity.this);
@@ -55,6 +67,8 @@ public class MainActivity extends Activity {
 
 				}
 			});
+
+			// Post gönderisi
 
 		}
 

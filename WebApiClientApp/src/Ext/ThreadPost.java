@@ -13,8 +13,7 @@ import android.os.AsyncTask;
 public class ThreadPost extends AsyncTask<String, Void, String> {
 	DataDownloadListener dataDownloadListener;
 
-	public void setDataDownloadListener(
-			DataDownloadListener dataDownloadListener) {
+	public void setDataDownloadListener(DataDownloadListener dataDownloadListener) {
 		this.dataDownloadListener = dataDownloadListener;
 	}
 
