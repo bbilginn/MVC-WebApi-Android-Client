@@ -49,9 +49,10 @@ public class MainActivity extends Activity {
 						ilet.Mail = Mail.getText().toString();
 						ilet.Mesaj = Mesaj.getText().toString();
 
-						PostGonder.execute(
-								"http://webapiornek.azurewebsites.net/api/values", ilet
-										.Form().toString());
+						PostGonder
+								.execute(
+										"http://webapiornek.azurewebsites.net/api/values",
+										ilet.Form().toString());
 						PostGonder
 								.setDataDownloadListener(new ThreadPost.DataDownloadListener() {
 									public void dataDownloadedSuccessfully(
@@ -62,8 +63,7 @@ public class MainActivity extends Activity {
 													MainActivity.this);
 										} else {
 											Dialogs.ToastGoster(
-													"Mail Gönderme Baþarýsýz. Gelen Cevap:"
-															+ data,
+													"Mail Gönderme Baþarýsýz.",
 													MainActivity.this);
 										}
 
