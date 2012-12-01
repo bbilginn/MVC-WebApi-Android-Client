@@ -49,15 +49,24 @@ public class MainActivity extends Activity {
 						ilet.Mail = Mail.getText().toString();
 						ilet.Mesaj = Mesaj.getText().toString();
 
-						PostGonder
-								.execute(
-										"http://webapiornek.azurewebsites.net/api/values",
-										ilet.Form().toString());
+						PostGonder.execute(
+								"http://webapiornek.azurewebsites.net/api/values", ilet
+										.Form().toString());
 						PostGonder
 								.setDataDownloadListener(new ThreadPost.DataDownloadListener() {
-									public void dataDownloadedSuccessfully(String data) {
-										Dialogs.ToastGoster(data,
-												MainActivity.this);
+									public void dataDownloadedSuccessfully(
+											String data) {
+										if (data.contains("200")) {
+											Dialogs.ToastGoster(
+													"Mail Gönderme Baþarýlý",
+													MainActivity.this);
+										} else {
+											Dialogs.ToastGoster(
+													"Mail Gönderme Baþarýsýz. Gelen Cevap:"
+															+ data,
+													MainActivity.this);
+										}
+
 									}
 								});
 					} catch (Exception e) {

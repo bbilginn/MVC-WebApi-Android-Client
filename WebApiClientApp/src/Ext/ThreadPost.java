@@ -7,6 +7,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicHeader;
 import org.apache.http.protocol.HTTP;
+import org.apache.http.util.EntityUtils;
 
 import android.os.AsyncTask;
 
@@ -34,7 +35,7 @@ public class ThreadPost extends AsyncTask<String, Void, String> {
 			httppost.setEntity(params);
 			HttpResponse response = httpclient.execute(httppost);
 
-			Sonuc = response.toString();
+			Sonuc = EntityUtils.toString(response.getEntity());
 		} catch (Exception e) {
 			Sonuc = "Ýþlem Baþarýsýz";
 		}
